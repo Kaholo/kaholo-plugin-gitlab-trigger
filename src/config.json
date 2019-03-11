@@ -1,0 +1,40 @@
+{
+    "name": "GitLab-Trigger",
+    "type": "trigger",
+    "execProgram": "node",
+    "main": "app.js",
+    "imgUrl": "logo.png",
+    "version": "1.0.0",
+    "description": "GitLab plugin",
+    "settings":[
+      {
+        "name":"SECRET",
+        "viewName":"Webhook secret",
+        "type":"vault"
+      }
+    ],
+    "methods": [
+      {
+        "name": "webhook",
+        "route": "post /webhook/gitlab",
+        "viewName": "GitLab Webhook",
+        "params": [
+          {
+            "name": "SECRET",
+            "viewName": "Webhook secret",
+            "type": "vault"
+          },
+          {
+            "name": "BRANCH",
+            "viewName": "branch",
+            "type": "string"
+          },
+          {
+            "name": "REPO",
+            "viewName": "Git repo",
+            "type": "string"
+          }
+        ]
+      }
+    ]
+  }
