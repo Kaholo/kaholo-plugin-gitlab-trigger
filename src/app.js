@@ -1,7 +1,7 @@
 const mapExecutionService = require("../../../api/services/map-execution.service");
 const Trigger = require("../../../api/models/map-trigger.model");
 const config = require("./config");
-
+const minimatch = require("minimatch")
 
 function findTriggers(body, validatationFn, startParams, req, res){
     Trigger.find({ plugin: config.name }).then((triggers) => {
@@ -19,9 +19,6 @@ function exec(trigger, body, io){
     return ()=>{
         console.log(trigger.map);
         let message = trigger.name + ' - Started by Gitlab trigger';
-        /*if (body.sender && body.sender.login) {
-            message += ` (body by ${body.sender.login}`
-        }*/
         console.log(`******** Gitlab: executing map ${trigger.map} ********`);
         mapExecutionService.execute(trigger.map, null, io, {config : trigger.configuration}, message, body);
     }
@@ -64,14 +61,14 @@ function validateTriggerPR(trigger, {repositoryURL, targetBranch, sourceBranch, 
         /**
          * Check that To branch provided - else - consider as any.
          */
-        if (toBranch.value && targetBranch !== toBranch.value) {
+        if (toBranch.value &&  !minimatch(targetBranch, toBranch.value)) {
                 return reject("Not matching target branch")
         }
 
         /**
          * Check that From branch provided - else - consider as any.
          */
-        if (fromBranch.value && sourceBranch !== fromBranch.value) {
+        if (fromBranch.value &&  !minimatch(sourceBranch, fromBranch.value)) {
             return reject("Not matching target branch")
         }
 
@@ -113,7 +110,7 @@ function validateTriggerPush(trigger, {repositoryURL, pushBranch, secret}){
         /**
          * Check that To branch provided - else - consider as any.
          */
-        if (triggerPushBranch.value && pushBranch !== triggerPushBranch.value) {
+         if (triggerPushBranch.value && !minimatch(pushBranch, triggerPushBranch.value)) {
                 return reject("Not matching pushed branch")
         }
 
