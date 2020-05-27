@@ -4,6 +4,7 @@ GitLab trigger plugin for Kaholo. The trigger have catch two webhooks:
 - Merge Request
 
 **Settings**
+
 Secret - String
 
 # Methods webhookPush
