@@ -1,40 +1,67 @@
 {
-    "name": "GitLab-Trigger",
-    "type": "trigger",
-    "execProgram": "node",
-    "main": "app.js",
-    "imgUrl": "logo.png",
-    "version": "1.0.0",
-    "description": "GitLab plugin",
-    "settings":[
-      {
-        "name":"SECRET",
-        "viewName":"Webhook secret",
-        "type":"vault"
-      }
-    ],
-    "methods": [
-      {
-        "name": "webhook",
-        "route": "post /webhook/gitlab",
-        "viewName": "GitLab Webhook",
-        "params": [
-          {
-            "name": "SECRET",
-            "viewName": "Webhook secret",
-            "type": "vault"
-          },
-          {
-            "name": "BRANCH",
-            "viewName": "branch",
-            "type": "string"
-          },
-          {
-            "name": "REPO",
-            "viewName": "Git repo",
-            "type": "string"
-          }
-        ]
-      }
-    ]
-  }
+  "name": "GitLab-Trigger",
+  "type": "trigger",
+  "execProgram": "node",
+  "main": "app.js",
+  "imgUrl": "logo.png",
+  "version": "1.0.1",
+  "description": "GitLab plugin",
+  "settings":[
+    {
+      "name":"SECRET",
+      "viewName":"Webhook secret",
+      "type":"string"
+    }
+  ],
+  "methods": [
+    {
+      "name": "webhookPush",
+      "route": "post /webhook/gitlab/push",
+      "viewName": "GitLab Webhook push",
+      "params": [
+        {
+          "name": "SECRET",
+          "viewName": "Webhook secret",
+          "type": "string"
+        },
+        {
+          "name": "PUSH_BRANCH",
+          "viewName": "branch",
+          "type": "string"
+        },
+        {
+          "name": "REPO_URL",
+          "viewName": "Git repo",
+          "type": "string"
+        }
+      ]
+    },
+    {
+      "name": "mrWebhook",
+      "route": "post /webhook/gitlab/mr",
+      "viewName": "GitLab Webhook merge request",
+      "params": [
+        {
+          "name": "SECRET",
+          "viewName": "Webhook secret",
+          "type": "string"
+        },
+        {
+          "name": "TO_BRANCH",
+          "viewName": "Target branch",
+          "type": "string"
+        },
+        {
+          "name": "FROM_BRANCH",
+          "viewName": "Source branch",
+          "type": "string"
+        },
+        {
+          "name": "REPO_URL",
+          "viewName": "Gitlab repo http url",
+          "type": "string"
+        }
+      ]
+    }
+  ]
+}
