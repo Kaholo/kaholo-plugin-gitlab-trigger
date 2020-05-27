@@ -8,5 +8,7 @@
     },
     "author": "Kaholo Team (Ilan Yaniv)",
     "license": "ISC",
-    "dependencies": {}
+    "dependencies": {
+        "minimatch": "^3.0.4"
+    }
 }
