@@ -20,7 +20,7 @@ function exec(trigger, body, io){
         console.log(trigger.map);
         let message = trigger.name + ' - Started by Gitlab trigger';
         console.log(`******** Gitlab: executing map ${trigger.map} ********`);
-        mapExecutionService.execute(trigger.map, null, io, {config : trigger.configuration}, message, body);
+        mapExecutionService.execute(trigger.map, null, io, {config : trigger.configuration, agents: []}, message, body);
     }
 }
 
