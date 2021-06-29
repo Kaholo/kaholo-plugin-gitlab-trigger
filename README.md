@@ -9,7 +9,7 @@ Secret - String
 
 # Method: webhookPush
 
-*Webhook URL:* *<<Kahoolo-URL>>*/webhook/gitlab/push
+*Webhook URL:* *\<Kahoolo-URL\>*/webhook/gitlab/push
 
 **Description**
 
@@ -23,7 +23,7 @@ This method catches the push webhook
 
 # Method: mrWebhook
   
-*Webhook URL:* *<<Kahoolo-URL>>*/webhook/gitlab/mr
+*Webhook URL:* *\<Kahoolo-URL\>*/webhook/gitlab/mr
 
 **Description**
 
