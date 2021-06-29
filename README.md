@@ -7,7 +7,9 @@ GitLab trigger plugin for Kaholo. The trigger have catch two webhooks:
 
 Secret - String
 
-# Methods webhookPush
+# Method: webhookPush
+
+*Webhook URL:* <Kahoolo-URL>/webhook/gitlab/push
 
 **Description**
 
@@ -19,7 +21,9 @@ This method catches the push webhook
 2. Push branch - The branch name which was pushed to (ie. master, develop...) it can also be a substring.
 3. Repo URL - the HTTP URl to the repository (when choosing to clone)
 
-# Methods mrWebhook
+# Method: mrWebhook
+  
+*Webhook URL:* <Kahoolo-URL>/webhook/gitlab/mr
 
 **Description**
 
