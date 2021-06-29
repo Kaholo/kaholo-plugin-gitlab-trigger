@@ -3,11 +3,14 @@ GitLab trigger plugin for Kaholo. The trigger have catch two webhooks:
 - Push
 - Merge Request
 
-**Settings**
+## Settings
+1. Secret (Vault)
 
-Secret - String
+## How To Use
+After installing this trigger on your Kaholo Server, make sure you have a webhook configured on your GitLab Repository.
+You can see how to do it in [here](https://docs.gitlab.com/ee/user/project/integrations/webhooks.html).
 
-# Method: webhookPush
+## Method: webhookPush
 
 *Webhook URL:* *\<Kahoolo-URL\>*/webhook/gitlab/push
 
@@ -17,9 +20,9 @@ This method catches the push webhook
 
 **Parameters**
 
-1. Secret - the secret string (to override settings)
-2. Push branch - The branch name which was pushed to (ie. master, develop...) it can also be a substring.
-3. Repo URL - the HTTP URl to the repository (when choosing to clone)
+1. Secret (Vault) **Optional** - If provided, check secret in webhook matches.
+2. Push Branch (String) **Optional** - The name or name [minimatch pattern](https://github.com/isaacs/minimatch#readme) of the branches to catch with this webhook.
+3. Repo URL (String) **Optional** - The URL or it's [minimatch pattern](https://github.com/isaacs/minimatch#readme), of the repositories to catch in the webhook.
 
 # Method: mrWebhook
   
@@ -31,7 +34,7 @@ This method catches the Merge Request webhook
 
 **Parameters**
 
-1. Secret - the secret string (to override settings)
-2. To branch - The target branch (ie. master) it can also be a substring.
-3. From branch - The source branch (ie. develop) it can also be a substring.
-3. Repo URL - the HTTP URl to the repository (when choosing to clone)
+1. Secret (Vault) **Optional** - If provided, check secret in webhook matches.
+2. To Branch (String) **Optional** - The name or name [minimatch pattern](https://github.com/isaacs/minimatch#readme) of the target branches to catch with this webhook.
+3. From Branch (String) **Optional** - The name or name [minimatch pattern](https://github.com/isaacs/minimatch#readme) of the source branches to catch with this webhook.
+4. Repo URL (String) **Optional** - The URL or it's [minimatch pattern](https://github.com/isaacs/minimatch#readme), of the repositories to catch in the webhook.
