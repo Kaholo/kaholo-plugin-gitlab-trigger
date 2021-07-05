@@ -4,13 +4,13 @@
   "execProgram": "node",
   "main": "app.js",
   "imgUrl": "logo.png",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "GitLab Trigger",
   "settings":[
     {
       "name":"SECRET",
       "viewName":"Webhook secret",
-      "type":"string"
+      "type":"vault"
     }
   ],
   "methods": [
@@ -22,11 +22,11 @@
         {
           "name": "SECRET",
           "viewName": "Webhook secret",
-          "type": "string"
+          "type": "vault"
         },
         {
           "name": "PUSH_BRANCH",
-          "viewName": "branch",
+          "viewName": "Branch Pattern",
           "type": "string"
         },
         {
@@ -44,7 +44,7 @@
         {
           "name": "SECRET",
           "viewName": "Webhook secret",
-          "type": "string"
+          "type": "vault"
         },
         {
           "name": "TO_BRANCH",
